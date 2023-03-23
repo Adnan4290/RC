@@ -1,9 +1,11 @@
 from flask import Flask, render_template, Response
 from camera_stream import gen_frames
 from input_handler import handle_input
-
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
+app.debug=True
+socketio = SocketIO(app)
 
 
 @app.route('/video_feed')
@@ -23,5 +25,19 @@ def index():
     return render_template('index.html')
 
 
+@socketio.on('connect')
+def handle_connect():
+    print('Client connected')
+
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print('Client disconnected')
+
+
+def send_frame(frame):
+    emit('frame', frame)
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
