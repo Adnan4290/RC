@@ -1,71 +1,49 @@
+/* Set the background color and center the content */
 body {
     background-color: #642424;
     text-align: center;
   }
-
-  #video-stream {
+  
+  /* Style the video stream and canvas */
+  #video-stream, #video-canvas {
     display: block;
     margin: 0 auto;
+    border: 5px solid white;
   }
-
+  
+  /* Style the control buttons */
   #controls {
     display: inline-block;
     margin-top: 30px;
   }
-
+  
+  #up, #down, #left, #right {
+    border-radius: 50%;
+    border: 3px solid white;
+    background-color: transparent;
+    color: white;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    line-height: 56px;
+    margin: 0 20px;
+  }
+  
   #up {
-    border-radius: 50%;
-    border: 3px solid white;
-    background-color: transparent;
-    color: white;
-    width: 60px;
-    height: 60px;
-
-    margin-left: 25px;
     margin-bottom: 25px;
-
-    font-size: 20px;
-    line-height: 56px;
   }
-
-  #down {
-    border-radius: 50%;
-    border: 3px solid white;
-    background-color: transparent;
-    color: white;
-    width: 60px;
-    height: 60px;
-    margin-left: 20px;
-    font-size: 20px;
-    line-height: 56px;
-  }
-
-  #left {
-    border-radius: 50%;
-    border: 3px solid white;
-    background-color: transparent;
-    color: white;
-    width: 60px;
-    height: 60px;
-    margin-right: 20px;
-    font-size: 20px;
-    line-height: 56px;
-  }
-
-  #right {
-    border-radius: 50%;
-    border: 3px solid white;
-    background-color: transparent;
-    color: white;
-    width: 60px;
-    height: 60px;
-    margin-left: 20px;
-    font-size: 20px;
-    line-height: 56px;
-  }
-
+  
+  /* Style the message box */
   #message {
     font-size: 2rem;
     color: white;
-
   }
+  
+  /* Make the page responsive for mobile devices */
+  @media only screen and (max-width: 768px) {
+    #video-stream, #video-canvas {
+      width: 80vw;
+      height: auto;
+    }
+  }
+  

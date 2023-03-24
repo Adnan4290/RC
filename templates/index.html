@@ -4,13 +4,16 @@
 <head>
   <title>IOT Project</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.min.js"></script>
   <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
   <h1>IOT Project</h1>
   <h2>RC Tamuq Car</h2>
-  <img id="video-stream" src="{{ url_for('video_feed') }}" width="640" height="480" fps="30"/>
+  <canvas id="video-canvas" width="640" height="480"></canvas>
+  <video id="video-stream" width="640" height="480" autoplay></video>
+
   <br />
   <div id="controls">
     <button id="up">▲</button>
@@ -20,8 +23,10 @@
     <button id="right">▶</button>
   </div>
   <div id="message"></div>
-  <!-- <button id="toggle-camera">Switch Camera</button> -->
   <script src="/static/script.js"></script>
+  <script>
+  
+  </script>
 </body>
 
 </html>

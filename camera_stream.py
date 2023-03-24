@@ -12,7 +12,7 @@ stream = io.BytesIO()
 
 def gen_frames():
     while True:
-        success, frame = camera.read()
+        success, frame = cv2.VideoCapture(0)
         if not success:
             break
         else:
