@@ -1,5 +1,5 @@
 from flask import Flask, render_template, Response
-# from camera_stream import gen_frames
+from camera_stream import gen_frames
 from input_handler import handle_input
 from flask_socketio import SocketIO, emit
 from camera_switch import switch_camera
@@ -11,9 +11,7 @@ socketio = SocketIO(app)
 
 @app.route('/video_feed')
 def video_feed():
-    # return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
-    #return an empty response for debugging
-    return ""
+    return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 @app.route('/control', methods=['POST'])
