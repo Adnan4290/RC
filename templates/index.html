@@ -5,7 +5,25 @@
   <title>IOT Project</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkSR-H2UMUt-Kr_9934ViArln29Hj-UTU&callback=initMap" async defer></script>
   <link rel="stylesheet" href="/static/style.css">
+  <script>
+    
+  function switchCameraBtn() {
+      var switchCameraBtn = document.querySelector('#switch-camera-btn')
+  // console.log(switchCameraBtn);
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/switch_camera');
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log(xhr.responseText);
+    }
+  };
+  xhr.send(JSON.stringify({}));
+};
+  </script>
 </head>
 
 <body>
@@ -23,6 +41,11 @@
     <button id="right">▶</button>
   </div>
   <div id="message"></div>
+  <button id="switch-camera-btn" onclick="switchCameraBtn()" >Switch Camera</button>
+  <div id="map-container">
+    <div id="map"></div>
+  </div>
+  
   <script src="/static/script.js"></script>
   <script>
   

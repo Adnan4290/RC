@@ -81,5 +81,38 @@ $('#right').on('mousedown', function () {
       };
       img.src = 'data:image/jpeg;base64,' + data;
     });
+    // ----------------------------maps code --------------
+    function initMap() {
+      const map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 37.7749, lng: -122.4194 }, // set the initial center of the map
+        zoom: 8, // set the initial zoom level
+      });
+    }
+    // ---------------------------------------------------------
+    // const switchCameraBtn = document.getElementById('switch-camera-btn');
+
+    // switchCameraBtn.addEventListener('click', () => {
+    //   // Define the request parameters
+    //   const requestOptions = {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({}),
+    //   };
+    
+    //   // Send the POST request
+    //   fetch('/switch_camera', requestOptions)
+    //     .then(response => {
+    //       // Handle the response
+    //       console.log('Switch camera request sent successfully');
+    //     })
+    //     .catch(error => {
+    //       // Handle the error
+    //       console.error('Error sending switch camera request:', error);
+    //     });
+    // });
+    // ==============================
+
+
+    
 
 
