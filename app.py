@@ -48,7 +48,8 @@ def handle_disconnect():
 
 def send_frame(frame):
     emit('frame', frame)
-    @socketio.on('connect')
+
+@socketio.on('connect')
 def handle_connect():
     print('Client connected')
     ser = serial.Serial('/dev/ttyUSB0', 9600)
