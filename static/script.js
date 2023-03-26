@@ -33,7 +33,7 @@ $('#left').on('mousedown', function () {
 $('#right').on('mousedown', function () {
     sendControls({ 'right': 1 });
 }).on('mouseup', function () {
-    sendControals({ 'right': 0 });
+    sendControls({ 'right': 0 });
 });
 // ------------------------------------------------------input control code --------------------------
 //------------------------------------------------------video controlling code starts ------------------
