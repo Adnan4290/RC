@@ -5,9 +5,24 @@
   <title>IOT Project</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0kuJ-NC-qdMEfpZ6N0xbexYq3PY5zAH4&callback=initMap&v=weekly" async defer></script> -->
   <link rel="stylesheet" href="/static/style.css">
   <script>
+           function updateData() {
+      // make AJAX request to get latitude value
+      $.get('/latitude', function(data) {
+        $('#lat').text('Latitude: ' + data);
+      });
+  
+      // make AJAX request to get longitude value
+      $.get('/longitude', function(data) {
+        $('#lon').text('Longitude: ' + data);
+      });
+    }
+    while (true) {
+      updateData()
+    }
 
     function switchCameraBtn() {
       var switchCameraBtn = document.querySelector('#switch-camera-btn')
@@ -23,6 +38,19 @@
       };
       xhr.send(JSON.stringify({}));
     };
+       // ajax requests to fetch latitude and longitude
+       function updateData() {
+      // make AJAX request to get latitude value
+      $.get('/latitude', function(data) {
+        $('#lat').text('Latitude: ' + data);
+      });
+  
+      // make AJAX request to get longitude value
+      $.get('/longitude', function(data) {
+        $('#lon').text('Longitude: ' + data);
+      });
+    }
+
   </script>
 </head>
 

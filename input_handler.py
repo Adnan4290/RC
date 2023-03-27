@@ -1,3 +1,4 @@
+from flask import request
 import RPi.GPIO as GPIO
 
 # Set up GPIO pins
