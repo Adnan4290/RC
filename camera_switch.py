@@ -7,11 +7,11 @@ def switch_camera():
     gpio_4 = 4
     
     # Set GPIO mode to BCM
-    GPIO.setmode(GPIO.BCM)
+    # GPIO.setmode(GPIO.BCM)
 
     # Set GPIO pin modes
-    GPIO.setup(gpio_17, GPIO.OUT)
-    GPIO.setup(gpio_4, GPIO.OUT)
+    # GPIO.setup(gpio_17, GPIO.OUT)
+    # GPIO.setup(gpio_4, GPIO.OUT)
     
     # Check which camera is currently selected
     camera_a_selected = False

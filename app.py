@@ -1,8 +1,8 @@
 from flask import Flask, render_template, Response
 # from camera_stream import gen_frames
-# from input_handler import handle_input
+from input_handler import handle_input
 from flask_socketio import SocketIO, emit
-from camera_switch import switch_camera
+# from camera_switch import switch_camera
 import serial
 from flask_socketio import send, emit
 # from serial_reader import latitude, longitude
@@ -24,16 +24,23 @@ def serial_reader():
             data = ser.readline().decode('utf-8').strip()
 
             # Check if the line contains latitude and longitude values
-            if 'Lat:' in data:
-                latitude = float(data.split('Lat: ')[-1])
-                
-            elif 'Long:' in data:
-                longitude = float(data.split('Long: ')[-1])
+            # if 'Latitude: ' in data or 'Latitude:' in data:
+            #     latitude = float(data.split('Latitude:')[2])
+            # if 'Longitude: ' in data or 'Longitude: ' in data:
+            #     print("longtude condition entered")
+            #     longitude = float(data.split('Longitude:')[-1])
+            values = data.split(",")
+            latitude = float(values[0].split(":")[1])
+            longitude = float(values[1].split(":")[1])
+            print("Latitude:", latitude)
+            print("Longitude:", longitude)
 
+            print("latitude=")
             print(latitude)
+            print("longitude=")
             print(longitude)
             # Wait for one second before reading again
-            time.sleep(1)
+            time.sleep(10)
 
 # Start the serial reader thread when the app starts
 serial_thread = threading.Thread(target=serial_reader)
@@ -45,11 +52,11 @@ serial_thread.start()
     # return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-# @app.route('/control', methods=['POST'])
-# def control():
-    # message = handle_input()
-    # print(message)
-    # return message
+@app.route('/control', methods=['POST'])
+def control():
+    message = handle_input()
+    print(message)
+    return message
 
 
 @app.route('/')

@@ -1,4 +1,27 @@
 // Define a function to send the control data to the server
+function getData() {
+  $.ajax({
+      url: '/latitude',
+      type: 'GET',
+      success: function(data) {
+          $('#lat').html(data);
+      }
+  });
+
+  $.ajax({
+      url: '/longitude',
+      type: 'GET',
+      success: function(data) {
+          $('#lon').html(data);
+      }
+  });
+}
+
+$(document).ready(function() {
+  getData();
+  setInterval(getData, 5000); // Call getData() every 10 seconds
+});
+
 function sendControls(data) {
     // Send the AJAX request to the server
     $.ajax({
@@ -81,17 +104,5 @@ $('#right').on('mousedown', function () {
       };
       img.src = 'data:image/jpeg;base64,' + data;
     });
-    function updateData() {
-      // make AJAX request to get latitude value
-      $.get('/latitude', function(data) {
-        $('#lat').text('Latitude: ' + data);
-      });
-  
-      // make AJAX request to get longitude value
-      $.get('/longitude', function(data) {
-        $('#lon').text('Longitude: ' + data);
-      });
-    }
-    while (true) {
-      updateData
-    }
+
+   
