@@ -71,6 +71,9 @@ body {
     background-color: #3e8e41; /* change background color on hover */
     cursor: pointer; /* add pointer cursor on hover */
   }
+  #name{
+    color: white;
+  }
   
   
   

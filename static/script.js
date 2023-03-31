@@ -1,4 +1,27 @@
 // Define a function to send the control data to the server
+// function getData() {
+//   $.ajax({
+//       url: '/latitude',
+//       type: 'GET',
+//       success: function(data) {
+//           $('#lat').html(data);
+//       }
+//   });
+
+//   $.ajax({
+//       url: '/longitude',
+//       type: 'GET',
+//       success: function(data) {
+//           $('#lon').html(data);
+//       }
+//   });
+// }
+
+// $(document).ready(function() {
+//   getData();
+//   setInterval(getData, 5000); // Call getData() every 10 seconds
+// });
+
 function sendControls(data) {
     // Send the AJAX request to the server
     $.ajax({
@@ -33,7 +56,7 @@ $('#left').on('mousedown', function () {
 $('#right').on('mousedown', function () {
     sendControls({ 'right': 1 });
 }).on('mouseup', function () {
-    sendControals({ 'right': 0 });
+    sendControls({ 'right': 0 });
 });
 // ------------------------------------------------------input control code --------------------------
 //------------------------------------------------------video controlling code starts ------------------
@@ -81,38 +104,5 @@ $('#right').on('mousedown', function () {
       };
       img.src = 'data:image/jpeg;base64,' + data;
     });
-    // ----------------------------maps code --------------
-    function initMap() {
-      const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 37.7749, lng: -122.4194 }, // set the initial center of the map
-        zoom: 8, // set the initial zoom level
-      });
-    }
-    // ---------------------------------------------------------
-    // const switchCameraBtn = document.getElementById('switch-camera-btn');
 
-    // switchCameraBtn.addEventListener('click', () => {
-    //   // Define the request parameters
-    //   const requestOptions = {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({}),
-    //   };
-    
-    //   // Send the POST request
-    //   fetch('/switch_camera', requestOptions)
-    //     .then(response => {
-    //       // Handle the response
-    //       console.log('Switch camera request sent successfully');
-    //     })
-    //     .catch(error => {
-    //       // Handle the error
-    //       console.error('Error sending switch camera request:', error);
-    //     });
-    // });
-    // ==============================
-
-
-    
-
-
+   
