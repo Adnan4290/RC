@@ -9,6 +9,8 @@ from flask_socketio import SocketIO, emit, send
 
 from camera_stream import gen_frames
 from input_handler import handle_input
+from flask_socketio import SocketIO, emit
+from camera_switch import switch_camera
 
 app = Flask(__name__)
 app.debug=True
@@ -49,9 +51,9 @@ longitude = None
 # serial_thread.start()
 
 
-@app.route('/video_feed')
-def video_feed():
-    return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+# @app.route('/video_feed')
+# def video_feed():
+    # return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 @app.route('/control', methods=['POST'])
@@ -63,6 +65,7 @@ def control():
 
 @app.route('/')
 def index():
+    GPIO,cleanup()
     return render_template('index.html')
 
 @app.route('/switch_camera', methods=['POST','GET'])
